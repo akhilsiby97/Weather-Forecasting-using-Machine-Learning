@@ -1,0 +1,65 @@
+<!doctype html>
+<html>
+<head>
+    <script src="https://www.gstatic.com/firebasejs/ui/4.4.0/firebase-ui-auth.js"></script>
+    <link type="text/css" rel="stylesheet" href="https://www.gstatic.com/firebasejs/ui/4.4.0/firebase-ui-auth.css" />
+    
+    <title>IRISH WEATHER PREDICTION</title>
+    <script src="{{ url_for('static', filename='script.js') }}"></script>
+    <link type="text/css" rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+
+    <style>
+        body {
+            background-image: url({{ url_for('static', filename='images/irish_pic.jpg') }});
+            background-size: cover;
+            background-position: center;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            margin: 0;
+            font-family: Arial, sans-serif;
+        }
+        h1, p {
+            color: red;
+        }
+        .forecast-table {
+            margin-top: 20px;
+            background-color: rgba(255, 255, 255, 0.8);
+            padding: 20px;
+            border-radius: 10px;
+            text-align: center;
+        }
+        .forecast-table th, .forecast-table td {
+            color: red; /* Set text color to red for forecast table */
+        }
+        form {
+            background-color: rgba(255, 255, 255, 0.8);
+            padding: 20px;
+            border-radius: 10px;
+            text-align: center;
+        }
+        input[type="date"], input[type="submit"] {
+            margin: 5px;
+        }
+    </style>    
+</head>
+<body>
+    <h1 style="color: blue;">IRISH WEATHER PREDICTION</h1>
+    <form action="/weather_predict" method="post">
+        Start Date: <input type="date" name="StartDate" required /><br />
+        End Date: <input type="date" name="EndDate" required /><br />
+        <input type="hidden" name="county" value="{{ county }}" />
+        <input type="hidden" name="station" value="{{ station }}" />
+        <input type="submit" value="Submit" name="submit_button" />
+    </form>
+    <div class="forecast-table">
+        <!-- The forecast variable will be injected here by Flask -->
+        {{ forecast | safe }}
+    </div>
+</body>
+<script src="https://www.gstatic.com/firebasejs/7.14.5/firebase-app.js"></script>
+<script src="https://www.gstatic.com/firebasejs/7.8.0/firebase-auth.js"></script>
+<script src="{{ url_for('static', filename='app-setup.js') }}"></script>
+</html>

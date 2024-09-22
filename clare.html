@@ -1,0 +1,88 @@
+<!doctype html>
+<html>
+<head>
+ <script src="https://www.gstatic.com/firebasejs/ui/4.4.0/firebase-ui-auth.js"></script>
+ <link type="text/css" rel="stylesheet" 
+ href="https://www.gstatic.com/firebasejs/ui/4.4.0/firebase-ui-auth.css" />
+        
+ <title style="color: red;">IRISH WEATHER PREDICTION</title>
+ <script src="{{ url_for('static', filename='script.js') }}"></script>
+ <link type="text/css" rel="stylesheet" href="{{ url_for('static', 
+filename='style.css') }}">
+
+<meta charset="UTF-8">
+    <title>Station Links</title> 
+    <style>
+        
+        body {
+            background-image: url('{{ url_for('static', filename='images/irish_pic.jpg') }}');
+            background-size: cover;
+            background-position: center;
+            margin: 0;
+            font-family: Arial, sans-serif;
+            text-align: center; /* Center-align the text */
+        }
+        
+        .header {
+            width: 100%;
+            background-color: rgba(255, 255, 255, 0.8);
+            padding: 10px 20px;
+            margin-top: 0; /* Ensure it is at the top */
+            text-align: center;
+        }
+
+        .header h1 {
+            color: blue;
+            margin: 0; /* Remove default margin */
+        }
+
+        .container {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            height: calc(100vh - 60px); /* Adjust height to account for header */
+        }
+
+        .county-links {
+            background-color: rgba(255, 255, 255, 0.8);
+            padding: 20px;
+            border-radius: 10px;
+        }
+
+        .station-links a {
+            display: block;
+            font-size: 24px;
+            margin: 10px 0;
+            text-decoration: none;
+            color: #000;
+        }
+
+        .station-links a:hover {
+            color: #007BFF;
+        }
+    </style>
+</head>
+<body>
+<div id="firebase-auth-container"></div>
+<button id="sign-out" hidden="false">Sign out</button>
+ 
+    <div class="header">
+        <h1>IRISH WEATHER PREDICTION</h1>
+    </div>
+    <div class="container">
+        <div class="county-links">
+            <h2>CLARE<h2>
+            <h3>CHOOSE STATION</h3>
+            <a href="{{ url_for('station', county_name=county_name, station_name='Shannon Airport') }}">Shannon Airport</a>
+            
+            
+    </div>
+</body>
+
+
+</body>
+<script src="https://www.gstatic.com/firebasejs/7.14.5/firebase-app.js"></script>
+<script src="https://www.gstatic.com/firebasejs/7.8.0/firebase-auth.js"></script>
+<script src="{{ url_for('static', filename='app-setup.js') }}"></script>
+</html>

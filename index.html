@@ -1,0 +1,82 @@
+<!doctype html>
+<html>
+<head>
+    <link type="text/css" rel="stylesheet" href="https://www.gstatic.com/firebasejs/ui/4.4.0/firebase-ui-auth.css" />
+    <title style="color: red;">IRISH WEATHER PREDICTION</title>
+    <script src="{{ url_for('static', filename='script.js') }}"></script>
+    <link type="text/css" rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+
+    <meta charset="UTF-8">
+    <title>County Links</title> 
+    <style>
+        body {
+            background-image: url('{{ url_for('static', filename='images/irish_pic.jpg') }}');
+            background-size: cover;
+            background-position: center;
+            margin: 0;
+            font-family: Arial, sans-serif;
+            text-align: center; /* Center-align the text */
+        }
+        
+        .header {
+            width: 100%;
+            background-color: rgba(255, 255, 255, 0.8);
+            padding: 10px 20px;
+            margin-top: 0; /* Ensure it is at the top */
+            text-align: center;
+        }
+
+        .header h1 {
+            color: blue;
+            margin: 0; /* Remove default margin */
+        }
+
+        .container {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            height: calc(100vh - 60px); /* Adjust height to account for header */
+        }
+
+        .county-links {
+            background-color: rgba(255, 255, 255, 0.8);
+            padding: 20px;
+            border-radius: 10px;
+        }
+
+        .county-links a {
+            display: block;
+            font-size: 24px;
+            margin: 10px 0;
+            text-decoration: none;
+            color: #000;
+        }
+
+        .county-links a:hover {
+            color: #007BFF;
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <h1>IRISH WEATHER PREDICTION</h1>
+    </div>
+    <div class="container">
+        <div class="county-links">
+            <h2>CHOOSE COUNTY</h2>
+            <a href="{{ url_for('county', county_name='Dublin') }}">Dublin</a>
+            <a href="{{ url_for('county', county_name='Kerry') }}">Kerry</a>
+            <a href="{{ url_for('county', county_name='Galway') }}">Galway</a>
+            <a href="{{ url_for('county', county_name='Mayo') }}">Mayo</a>
+            <a href="{{ url_for('county', county_name='Cork') }}">Cork</a>
+            <a href="{{ url_for('county', county_name='Clare') }}">Clare</a>
+        </div>
+    </div>
+
+    {% if prediction %}    
+        <h1>Prediction Value:</h1>
+        <p>{{ prediction }}</p>
+    {% endif %}
+</body>
+</html>
